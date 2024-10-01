@@ -1,0 +1,31 @@
+/* Estilos para o cabeçalho */
+.header {
+    background-color: #000000; /* Cor de fundo */
+    padding: 20px; /* Espaçamento interno */
+    text-align: center; /* Centralizar o texto */
+    color: white; /* Cor do texto */
+    font-size: 24px; /* Tamanho da fonte */
+    font-family: Arial, sans-serif; /* Fonte */
+  }
+  
+  /* Estilos para os links de navegação */
+  .header ul {
+    list-style-type: none; /* Remover marcadores */
+    margin: 0; /* Remover margens */
+    padding: 0; /* Remover espaçamento interno */
+  }
+  
+  .header li {
+    display: inline; /* Exibir itens em linha */
+    margin: 0 15px; /* Espaçamento entre os itens */
+  }
+  
+  .header a {
+    color: white; /* Cor dos links */
+    text-decoration: none; /* Remover sublinhado */
+    font-size: 18px; /* Tamanho da fonte dos links */
+  }
+  
+  .header a:hover {
+    text-decoration: underline; /* Sublinhado ao passar o mouse */
+  }
