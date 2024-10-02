@@ -6,7 +6,7 @@ function Header() {
     <div className="header">
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/breve">Em Breve</a></li>
+        <li><a href="/upcoming">Upcoming Movies</a></li>
       </ul>
     </div>
   );

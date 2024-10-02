@@ -1,33 +1,77 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { keyboard } from '@testing-library/user-event/dist/keyboard';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { Container, Typography, Card, CardContent, CardMedia, Grid2 } from '@mui/material';
 import Header from '../Header.js';
-function MovieDetails() {
 
+function MovieDetails() {
   const location = useLocation();
   const { movieDetails } = location.state || {};
-  // console.log("Detalhes "+ JSON.stringify(movieDetails, null, 2));
-  console.log("Detalhes "+ JSON.stringify(movieDetails, null, 2));
+  
   if (!movieDetails) {
-    return <div>No movie data available</div>;
-  }
-  else {
-  return ( 
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <Header/>
-      <h1>{JSON.stringify(movieDetails.image?.name)}</h1>
-      <img src={`https://image.tmdb.org/t/p/w300${movieDetails.image.poster_path}`} alt={movieDetails.image?.name} style={{ width: '300px' }} />
-      <p><strong>Original Name:</strong> {JSON.stringify(movieDetails.image?.original_name)}</p>
-      <p><strong>Overview:</strong> {JSON.stringify(movieDetails.image?.overview)}</p>
-      <p><strong>First Air Date:</strong> {JSON.stringify(movieDetails.image?.first_air_date)}</p>
-      <p><strong>Original Language:</strong> {JSON.stringify(movieDetails.image?.original_language)}</p>
-      <p><strong>Country of Origin:</strong> {JSON.stringify(movieDetails.image?.origin_country)}</p>
-      <p><strong>Vote Average:</strong> {JSON.stringify(movieDetails.image?.vote_average)}</p>
-      <p><strong>Vote Count:</strong> {JSON.stringify(movieDetails.image?.vote_count)}</p>
-      <p><strong>Popularity:</strong> {JSON.stringify(movieDetails.image?.popularity)}</p>
-    </div>
-  );
+    return <Typography variant="h6">Sem dados de filmes disponíveis</Typography>;
+  } else {
+    return (
+      <Container>
+        <Header />
+        <Card sx={{ maxWidth: 345, margin: '20px auto' }}>
+          <CardMedia
+            component="img"
+            height="300"
+            image={`https://image.tmdb.org/t/p/w300${movieDetails.image.poster_path}`}
+            alt={movieDetails.image?.name}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {movieDetails.image?.name} {movieDetails.image?.title} 
+            </Typography>
+            <Grid2 container spacing={2}>
+              <Grid2 item xs={12}>
+                <Typography variant="body2" color="text.secondary">
+                  <strong>Original Name:</strong> {movieDetails.image?.original_name} {movieDetails.image?.original_title} 
+                </Typography>
+              </Grid2>
+              <Grid2 item xs={12}>
+                <Typography variant="body2" color="text.secondary">
+                  <strong>Overview:</strong> {movieDetails.image?.overview}
+                </Typography>
+              </Grid2>
+              <Grid2 item xs={12}>
+                <Typography variant="body2" color="text.secondary">
+                  <strong>First Air Date:</strong> {movieDetails.image?.first_air_date} {movieDetails.image?.release_date}
+                </Typography>
+              </Grid2>
+              <Grid2 item xs={12}>
+                <Typography variant="body2" color="text.secondary">
+                  <strong>Original Language:</strong> {movieDetails.image?.original_language}
+                </Typography>
+              </Grid2>
+              <Grid2 item xs={12}>
+                {movieDetails.image?.origin_country ? 
+                <Typography variant="body2" color="text.secondary">
+                  <strong>Country of Origin:</strong> {movieDetails.image?.origin_country}
+                </Typography>
+                : <div></div>}
+              </Grid2>
+              <Grid2 item xs={12}>
+                <Typography variant="body2" color="text.secondary">
+                  <strong>Vote Average:</strong> {movieDetails.image?.vote_average}
+                </Typography>
+              </Grid2>
+              <Grid2 item xs={12}>
+                <Typography variant="body2" color="text.secondary">
+                  <strong>Vote Count:</strong> {movieDetails.image?.vote_count}
+                </Typography>
+              </Grid2>
+              <Grid2 item xs={12}>
+                <Typography variant="body2" color="text.secondary">
+                  <strong>Popularity:</strong> {movieDetails.image?.popularity}
+                </Typography>
+              </Grid2>
+            </Grid2>
+          </CardContent>
+        </Card>
+      </Container>
+    );
   }
 }
 

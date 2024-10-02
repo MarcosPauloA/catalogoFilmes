@@ -1,10 +1,6 @@
-// import './App.css';
-
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { keyboard } from '@testing-library/user-event/dist/keyboard';
-import MovieDetails from './MovieDetails.js';
-import { useNavigate, Router, Routes, Route } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Header from '../Header.js';
 
 const URL = "https://api.themoviedb.org/3";
@@ -22,12 +18,12 @@ const endpoints = {
 function Image(movieDetails) {
   const navigate = useNavigate();
   const handleClick = () => {
-    console.log("TESTE: ", movieDetails.image);
-    navigate('/detalhes', { state: { movieDetails } });
+    navigate('/details', { state: { movieDetails } });
   };
   
   return (
-    <img src={`https://image.tmdb.org/t/p/w300${movieDetails.image.poster_path}`} alt="Movie Poster" onClick={handleClick}/>
+    <img src={`https://image.tmdb.org/t/p/w300${movieDetails.image.poster_path}`} alt="Movie Poster" 
+    onClick={handleClick} style={{ border: '2px solid black', borderRadius: '10px' }}/> // CSS inline
   )
 
 }
@@ -35,11 +31,6 @@ function Image(movieDetails) {
 function Home() {
   
   const [originals, setOriginals] = useState([]);
-  const [trending, setTrending] = useState([]);
-  const [nowPlaying, setNowPlaying] = useState([]);
-  const [popular, setPopular] = useState([]);
-  const [topRated, setTopRated] = useState([]);
-  const [upcoming, setUpcoming] = useState([]);  
 
   useEffect(() => {
     // Load Originals
@@ -50,7 +41,6 @@ function Home() {
         },
       })
       .then((res) => {
-        // console.log("resultado: ", res.data.results);
         setOriginals(res.data.results)});
   
     // Get other categories with the same pattern here

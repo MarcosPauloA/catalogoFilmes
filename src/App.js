@@ -1,8 +1,4 @@
 import './App.css';
-
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { keyboard } from '@testing-library/user-event/dist/keyboard';
 import MovieDetails from './pages/MovieDetails';
 import Home from './pages/Home';
 import UpcomingMovies from './pages/UpcomingMovies';
@@ -14,8 +10,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/detalhes" element={<MovieDetails />} />
-          <Route path="/breve" element={<UpcomingMovies />} />
+          <Route path="/details" element={<MovieDetails />} />
+          <Route path="/upcoming" element={<UpcomingMovies />} />
         </Routes>
     </Router>
     </div>
